@@ -96,5 +96,5 @@ See [LICENSE](https://github.com/lovelle/perl-disque/blob/master/LICENSE).
 
 Thanks
 ---
-Big thanks to Salvatore Sanfilippo aka [antirez](http://antirez.com/) for share his work.
-The people who contribute and did [perl-redis](https://github.com/PerlRedis/perl-redis) module.
+* Big thanks to Salvatore Sanfilippo aka [antirez](http://antirez.com/) for share his work.
+* The people who contribute and did [perl-redis](https://github.com/PerlRedis/perl-redis) module.
