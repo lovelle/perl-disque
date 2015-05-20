@@ -12,3 +12,4 @@ t/*.log
 META.yml
 MYMETA.*
 MANIFEST*
+Makefile
