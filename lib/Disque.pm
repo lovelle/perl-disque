@@ -1,6 +1,6 @@
 package Disque;
 
-# ABSTRACT: Perl binding for Disque database
+# ABSTRACT: Perl binding for Disque message broker
 # VERSION
 # AUTHORITY
 
