@@ -4,7 +4,6 @@ blib/
 inc/
 .build/
 *.sw[op]
-*.tar.gz
 *.log
 t/*.log
 *.old
