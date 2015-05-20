@@ -8,7 +8,6 @@ inc/
 t/*.log
 *.old
 *.swp
-META.yml
 MYMETA.*
 MANIFEST*
 Makefile
