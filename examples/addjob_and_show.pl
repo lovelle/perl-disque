@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use lib::Disque;
+use Disque;
 
 my $disque = Disque->new();
 

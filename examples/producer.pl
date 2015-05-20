@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use lib::Disque;
+use Disque;
 
 my $disque = Disque->new(servers => ["localhost:7711", "localhost:7712"]);
 
