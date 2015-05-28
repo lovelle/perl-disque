@@ -84,9 +84,7 @@ Installation
 ---
 
 ```
-$ perl Makefile.PL
-$ make
-$ make install
+$ cpan install Disque
 ```
 
 TODO
