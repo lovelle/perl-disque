@@ -4,7 +4,7 @@ package Disque;
 # VERSION
 # AUTHORITY
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use strict;
 use warnings;
@@ -318,13 +318,23 @@ __END__
 
 Disque - Perl client for Disque, an in-memory, distributed job queue
 
-=head1 SYNOPSIS
+=head1 CONNECTION
+
+    ## Connection:
+    ## perl-disque will try to connect to any available server in the order
+    ## is have been set, if there is any disque instance available,
+    ## the client will generate a connection error and will abort.
+    ## if you not spicify any server in conection `new()`
+    ## by default will only connect to '127.0.0.1:7711'.
 
     use Disque;
 
     # Defaults disque connects to 127.0.0.1:7711
     my $disque = Disque->new;
     my $disque = Disque->new(servers => '127.0.0.1:7711');
+
+    # Disque connects to multiple instances by default behaviour
+    my $disque = Disque->new(servers => ["localhost:7711", "localhost:7712"]);
 
     # Use UNIX domain socket
     my $disque = Disque->new(unixsock => '/tmp/disque.sock');
@@ -339,10 +349,41 @@ Disque - Perl client for Disque, an in-memory, distributed job queue
     my $disque = Disque->new(write_timeout => 1.2);
 
 
+=head1 ClUSTER
+
+    #You can use this library with single or multi-node clusters.
+
+    ## Connection:
+
+    # When you invoke "new()" you can choose in which method you will connect to the cluster,
+    # of course, this only will happen if ther is more than 1 node spicified.
+
+    # By default, as Salvatore [specified](https://github.com/antirez/disque#client-libraries)
+    # in the doc, the lib will try to connect to any available server in a randomly way.
+
+    # But also if you won't to connect to the server randomly you can specify
+    # the param "disable_random_connect => 1" in new() sub, for example:
+
+    my $disque = Disque->new(
+        servers => ['localhost:7711', 'localhost:7712', 'localhost:7713'],
+        disable_random_connect => 1
+    );
+
+    # So you will connect into the cluster in the order that you have set the nodes.
+
+
+=head1 STATUS
+
+The commands that are allready available are:
+add_job get_job ack_job fast_ack qlen qpeek enqueue dequeue del_job show
+
+
 =head1 DESCRIPTION
+
 Disque is a client to Disque client library.
 This module must works on top of Redis lib, and uses
 some of the internal subs in Redis lib.
 
 =head1 REPOSITORY
+
 L<https://github.com/lovelle/perl-disque>
