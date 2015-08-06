@@ -1,3 +1,6 @@
+0.04	Thu Aug 08 14:00:00 CET 2015
+    * Add commands qscan, qstat and jscan
+
 0.03	Tue Jul 22 18:15:00 CET 2015
     * Fix in 'examples/consumer.pl' don't do unnecessary foreach
 

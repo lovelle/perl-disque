@@ -32,4 +32,4 @@ resources:
   homepage: https://github.com/lovelle/perl-disque
   license: https://github.com/lovelle/perl-disque/blob/master/LICENSE
   repository: git://github.com/lovelle/perl-disque
-version: '0.03'
+version: '0.04'

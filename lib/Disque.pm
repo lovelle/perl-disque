@@ -4,7 +4,7 @@ package Disque;
 # VERSION
 # AUTHORITY
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use strict;
 use warnings;
@@ -176,6 +176,27 @@ sub dequeue {
     my $self = shift;
     my $resp = eval {$self->{disque}->__std_cmd('DEQUEUE', @_)};
     $self->__disque_reconnect($@, 'dequeue', @_) if $@;
+    return $resp;
+}
+
+sub qscan {
+    my $self = shift;
+    my $resp = eval {$self->{disque}->__std_cmd('QSCAN', @_)};
+    $self->__disque_reconnect($@, 'qscan', @_) if $@;
+    return $resp;
+}
+
+sub qstat {
+    my $self = shift;
+    my $resp = eval {$self->{disque}->__std_cmd('QSTAT', @_)};
+    $self->__disque_reconnect($@, 'qstat', @_) if $@;
+    return $resp;
+}
+
+sub jscan {
+    my $self = shift;
+    my $resp = eval {$self->{disque}->__std_cmd('JSCAN', @_)};
+    $self->__disque_reconnect($@, 'jscan', @_) if $@;
     return $resp;
 }
 

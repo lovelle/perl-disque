@@ -77,7 +77,8 @@ my $disque = Disque->new(debug => 1);
 Status
 ---
 The commands that are allready available are:
-`add_job` `get_job` `ack_job` `fast_ack` `qlen` `qpeek` `enqueue` `dequeue` `del_job` `show`
+`add_job` `get_job` `ack_job` `fast_ack` `qlen` `qpeek` `enqueue`
+`dequeue` `del_job` `show` `jscan` `qstat` `qscan`
 
 
 Installation
