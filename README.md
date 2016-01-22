@@ -25,7 +25,7 @@ Usage
 
 Connection:
 
-perl-disque will try to connect to any available server in the order is have been set,
+perl-disque will try to connect to any available server onto the order that has been set.
 if there is any disque instance available, the client will generate a connection error and will abort.
 
 if you not spicify any server in conection `new()` by default will only connect to '127.0.0.1:7711'.
@@ -50,7 +50,7 @@ You can use this library with single or multi-node clusters.
 #### Connection:
 
 When you invoke "new()" you can choose in which method you will connect to the cluster,
-of course, this only will happen if ther is more than 1 node spicified.
+of course, this only will happen if there is more than 1 node spicified.
 
 By default, as Salvatore [specified](https://github.com/antirez/disque#client-libraries)
 in the doc, the lib will try to connect to any available server in a randomly way.
