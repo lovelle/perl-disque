@@ -242,6 +242,13 @@ sub fast_ack {
     return $resp;
 }
 
+sub nack {
+    my $self = shift;
+    my $resp = eval {$self->{disque}->__std_cmd('NACK', @_)};
+    $self->__disque_reconnect($@, 'nack', @_) if $@;
+    return $resp;
+}
+
 sub __sock_connect {
     my ($self) = @_;
     $self->{conn}->($self) || warn "unable to connect to disque server at $self->{server}: $!\n";

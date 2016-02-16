@@ -78,7 +78,7 @@ Status
 ---
 The commands that are allready available are:
 `add_job` `get_job` `ack_job` `fast_ack` `qlen` `qpeek` `enqueue`
-`dequeue` `del_job` `show` `jscan` `qstat` `qscan`
+`dequeue` `del_job` `show` `jscan` `qstat` `qscan` `nack`
 
 
 Installation
