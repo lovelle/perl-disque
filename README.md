@@ -28,11 +28,10 @@ Connection:
 perl-disque will try to connect to any available server in the order that has been set.
 If there is no disque instance available, the client will generate a connection error and will abort.
 
-If you do not specify any server, `new()` by default will only connect to '127.0.0.1:7711'.
-
 ```perl
+# Defaults to $ENV{DISQUE_SERVER} or 127.0.0.1:7711
 use Disque;
-my $disque = Disque->new();
+my $disque = Disque->new;
 ```
 
 To send a new job just do

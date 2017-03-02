@@ -4,7 +4,7 @@ package Disque;
 # VERSION
 # AUTHORITY
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use strict;
 use warnings;
@@ -23,8 +23,22 @@ use constant BUFSIZE => 4096;
 sub new {
     my ($class, %args) = @_;
     my $self = bless {}, $class;
+
+    ## Deal with DISQUE_SERVER ENV
+    if ($ENV{DISQUE_SERVER} && ! exists $args{sock} && ! exists $args{server} && ! exists $args{sentinel}) {
+        if ($ENV{DISQUE_SERVER} =~ m!^/!) {
+            $args{unixsock} = $ENV{DISQUE_SERVER};
+        }
+        elsif ($ENV{DISQUE_SERVER} =~ m!^unix:(.+)!) {
+            $args{unixsock} = $1;
+        }
+        elsif ($ENV{DISQUE_SERVER} =~ m!^(?:tcp:)?(.+)!) {
+            $args{server} = $1;
+        }
+    }
+
     my $default = '127.0.0.1:7711';
-    my $servers = $args{servers} || [$default];
+    my $servers = $args{servers} || [$args{server}] || [$default];
     my $len = scalar @{$servers};
     my @my_servers = '';
     my $hello = '';
@@ -352,14 +366,12 @@ Disque - Perl client for Disque, an in-memory, distributed job queue
     ## perl-disque will try to connect to any available server in the order
     ## is have been set, if there is any disque instance available,
     ## the client will generate a connection error and will abort.
-    ## if you not spicify any server in conection `new()`
-    ## by default will only connect to '127.0.0.1:7711'.
 
     use Disque;
 
-    # Defaults disque connects to 127.0.0.1:7711
+    # Defaults to $ENV{DISQUE_SERVER} or 127.0.0.1:7711
     my $disque = Disque->new;
-    my $disque = Disque->new(servers => '127.0.0.1:7711');
+    my $disque = Disque->new(server => '127.0.0.1:7711');
 
     # Disque connects to multiple instances by default behaviour
     my $disque = Disque->new(servers => ["localhost:7711", "localhost:7712"]);
